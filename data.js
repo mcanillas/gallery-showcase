@@ -24,7 +24,7 @@ var initialDCars = [
     img: "images/eg6.jpg"
   },
   {
-    model: "Nissa Sileighty",
+    model: "Nissan Sileighty",
     img: "images/sileighty.jpg"
   },
   {

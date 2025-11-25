@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="no-scroll">
   <section class="main-content text-white">
     <section class="hero" id="top">
       <video id="heroVideo" muted loop playsinline class="hero-video">
@@ -45,16 +45,16 @@
 
     for (var i = 0; i < initialDCars.length; i++) {
       carGallery.innerHTML += `
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card my-3 shadow-sm" onclick="openModal('` + initialDCars[i].img + `', '` + initialDCars[i].model + `')">
-            <img src="` + initialDCars[i].img + `" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">` + initialDCars[i].model + `</h5>
-              <h5 class="card-title mt-3">` + ownerCars[i].owner + `</h5>
-            </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card my-3 shadow-sm" onclick="openModal('` + initialDCars[i].img + `', '` + initialDCars[i].model + `')">
+          <img src="` + initialDCars[i].img + `" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">` + initialDCars[i].model + `</h5>
+            <h5 class="card-title mt-3">` + ownerCars[i].owner + `</h5>
           </div>
         </div>
-      `;
+      </div>
+    `;
     }
 
     function openModal(imgSrc, title) {
@@ -72,18 +72,36 @@
 
     heroVideo.play();
 
-    setTimeout(function () {
-      heroVideo.muted = false;
-    }, 2000);
+    let clickCount = 0;
 
-    document.addEventListener('click', function () {
-      heroVideo.muted = true;
-      heroVideo.volume = 1.0;
-      heroVideo.classList.add('blurred');
-      heroTitle.classList.add('show');
-      heroLead.classList.add('show');
-    }, { once: true });
+    document.addEventListener("click", function () {
+
+      clickCount++;
+
+      if (clickCount === 1) {
+        heroVideo.muted = false;
+        heroVideo.volume = 1.0;
+
+        console.log("1st click → Unmuted video");
+      }
+
+      if (clickCount === 2) {
+        heroVideo.muted = true;
+
+        heroTitle.classList.add("show");
+        heroLead.classList.add("show");
+
+        document.body.classList.remove("no-scroll");
+
+        heroVideo.classList.add("blurred");
+        document.querySelector(".hero-overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
+
+        console.log("2nd click → Muted + Titles + Scroll on");
+      }
+
+    });
   </script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

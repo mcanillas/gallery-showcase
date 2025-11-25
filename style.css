@@ -96,7 +96,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 0;
 }
 
@@ -178,4 +178,10 @@
     font-size: 1.2rem;
     letter-spacing: 2px;
   }
+}
+
+/* Disable scroll on load */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

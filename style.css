@@ -1,0 +1,10 @@
+.hero {
+  background-image: url('dota-herosec.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 140vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: white;
+}

@@ -85,6 +85,9 @@
     var heroLead = document.getElementById('heroLead');
     var unmuteImg = document.getElementById("unmuteImg");
     var startImg = document.getElementById("startImg");
+    var startSound = new Audio('hero/start.mp3');
+    
+    startSound.volume = 0.2; 
 
     heroVideo.play();
 
@@ -108,6 +111,8 @@
       if (clickStage === 1) {
 
         startImg.classList.add("hidden");
+
+        startSound.play();
 
         heroVideo.muted = true;
 

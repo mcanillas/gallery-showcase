@@ -3,31 +3,55 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
+  transform: skewY(-2deg);
+  background: #fff;
+  border: 3px solid #000;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: skewY(-2deg) translateY(-10px) scale(1.02);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8) !important;
 }
 
 .card-img-top {
   width: 100%;
-  height: 140px; 
+  height: 210px; 
   object-fit: cover;
   object-position: center;
+  transform: skewY(2deg);
 }
 
 .card-body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  transform: skewY(2deg);
+  padding: 1.25rem;
 }
 
 .card-title {
-  font-size: 1rem;
-  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: #000;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
+.card-subtitle {
+  font-size: 0.9rem;
+  color: #000000;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.6;
+}
 .modal-overlay {
   display: none;
   position: fixed;
@@ -191,7 +215,7 @@
   left: 50%;
   transform: translateX(-50%);
   
-  width: 260px;
+  width: 520px;
   cursor: default;
 
   border: none;
@@ -229,14 +253,12 @@
   left: 50%;
   transform: translateX(-50%);
   
-  width: 260px;
+  width: 520px;
   cursor: default;
 
   border: none;
   outline: none;
   background: none;
-
-  /* Gold glow like old arcade games */
   filter: drop-shadow(0 0 6px #ffdd66) drop-shadow(0 0 3px #ffcc33);
   animation: flicker 1.3s infinite alternate;
 
@@ -246,3 +268,34 @@
 .retro-start.hidden {
   display: none;
 }
+
+body {
+  background-color: #f5f5f5;
+}
+
+.gallery-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  color: #000;
+  position: relative;
+  padding-left: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.gallery-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: #ff0000;
+  border-radius: 2px;
+}
+
+.gallery-title .accent {
+  font-weight: 900;
+  color: #ff0000;
+}
+

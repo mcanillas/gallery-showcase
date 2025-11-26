@@ -180,8 +180,69 @@
   }
 }
 
-/* Disable scroll on load */
 .no-scroll {
   overflow: hidden;
   height: 100vh;
+}
+
+.retro-unmute {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 260px;
+  cursor: default;
+
+  border: none;
+  outline: none;
+  background: none;
+
+  filter: drop-shadow(0 0 6px #ffdd66) drop-shadow(0 0 3px #ffcc33);
+  animation: flicker 1.3s infinite alternate;
+
+  z-index: 9999;
+}
+
+.retro-unmute.hidden {
+  display: none;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #ffdd66) drop-shadow(0 0 20px #ffcc33);
+  }
+  50% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 5px #ffcc33);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #ffdd66) drop-shadow(0 0 20px #ffcc33);
+  }
+}
+
+.retro-start {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 260px;
+  cursor: default;
+
+  border: none;
+  outline: none;
+  background: none;
+
+  /* Gold glow like old arcade games */
+  filter: drop-shadow(0 0 6px #ffdd66) drop-shadow(0 0 3px #ffcc33);
+  animation: flicker 1.3s infinite alternate;
+
+  z-index: 9999;
+}
+
+.retro-start.hidden {
+  display: none;
 }

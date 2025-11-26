@@ -11,31 +11,38 @@
 </head>
 
 <body class="no-scroll">
-  <section class="main-content text-white">
-    <section class="hero" id="top">
-      <video id="heroVideo" muted loop playsinline class="hero-video">
-        <source src="hero/herovid.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-8">
-            <h1 class="display-4 hero-mainlogo" id="heroTitle">
-              Initial <span class="red-d">D</span>
-            </h1>
-            <p class="lead hero-lead" id="heroLead">Car Gallery</p>
-          </div>
+
+  <section class="hero" id="top">
+    <video id="heroVideo" muted loop playsinline class="hero-video">
+      <source src="hero/herovid.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <img id="unmuteImg" src="images/unmute.png" class="retro-unmute">
+
+    <img id="startImg" src="images/start.png" class="retro-start hidden">
+
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="display-4 hero-mainlogo" id="heroTitle">
+            Initial <span class="red-d">D</span>
+          </h1>
+          <p class="lead hero-lead" id="heroLead">Car Gallery</p>
         </div>
       </div>
-    </section>
-    <div class="container">
-      <div class="row" id="car-gallery">
-      </div>
     </div>
+  </section>
 
-    <div class="modal-overlay" id="imageModal" onclick="closeModal()">
-      <img class="modal-content" id="modalImage" alt="Car preview">
+  <div class="container">
+    <div class="row" id="car-gallery">
     </div>
+  </div>
+
+  <div class="modal-overlay" id="imageModal" onclick="closeModal()">
+    <img class="modal-content" id="modalImage" alt="Car preview">
+  </div>
   </section>
 
   <script src="data.js"></script>
@@ -66,40 +73,51 @@
       document.getElementById('imageModal').classList.remove('active');
     }
 
-    var heroVideo = document.getElementById('heroVideo');
-    var heroTitle = document.getElementById('heroTitle');
-    var heroLead = document.getElementById('heroLead');
+var heroVideo = document.getElementById('heroVideo');
+var heroTitle = document.getElementById('heroTitle');
+var heroLead = document.getElementById('heroLead');
+var unmuteImg = document.getElementById("unmuteImg");
+var startImg = document.getElementById("startImg");
 
-    heroVideo.play();
+heroVideo.play();
 
-    let clickCount = 0;
+let clickStage = 0;
 
-    document.addEventListener("click", function () {
+document.addEventListener("click", function () {
 
-      clickCount++;
+  if (clickStage === 0) {
 
-      if (clickCount === 1) {
-        heroVideo.muted = false;
-        heroVideo.volume = 1.0;
+    heroVideo.muted = false;
+    heroVideo.volume = 1.0;
 
-        console.log("1st click → Unmuted video");
-      }
+    unmuteImg.classList.add("hidden");     
+    startImg.classList.remove("hidden");   
 
-      if (clickCount === 2) {
-        heroVideo.muted = true;
+    clickStage = 1;
+    return;
+  }
 
-        heroTitle.classList.add("show");
-        heroLead.classList.add("show");
+  
+  if (clickStage === 1) {
 
-        document.body.classList.remove("no-scroll");
+    startImg.classList.add("hidden"); 
 
-        heroVideo.classList.add("blurred");
-        document.querySelector(".hero-overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
+    heroVideo.muted = true;
 
-        console.log("2nd click → Muted + Titles + Scroll on");
-      }
+    heroTitle.classList.add("show");
+    heroLead.classList.add("show");
 
-    });
+    document.body.classList.remove("no-scroll");
+    heroVideo.classList.add("blurred");
+
+    document.querySelector(".hero-overlay")
+      .style.backgroundColor = "rgba(0,0,0,0.4)";
+
+    clickStage = 2;
+  }
+
+});
+
   </script>
 
 
